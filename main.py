@@ -10,18 +10,6 @@ api_key = "ND6S6BGBJAZH4MZU"
 def process_stock_data(symbol: str, start_date: str, end_date: str):
     try:
         if symbol:
-            # Retrieve data from API
-            # if period=='day':
-            #     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}&outputsize=full"
-            #     response = requests.get(url)
-            #     data = response.json()["Time Series (Daily)"]
-            # elif period=='week':
-            #     print("week")
-            #     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol={symbol}&apikey={api_key}&outputsize=full"
-            #     response = requests.get(url)
-            #     data = response.json()["Weekly Adjusted Time Series"]
-            # elif period=='month':
-            # print("month")
             url = url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}&outputsize=full"
             response = requests.get(url)
             data = response.json()["Time Series (Daily)"]
