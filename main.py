@@ -28,7 +28,6 @@ def process_stock_data(symbol: str, start_date: str, end_date: str):
             
             stock_data['adjusted close'] = stock_data['adjusted close'].astype(float)
             stock_data = stock_data[(stock_data.index >= start_date) & (stock_data.index <= end_date)]
-            print(stock_data)
             daily_returns = stock_data['adjusted close'].pct_change()
             total_return = (stock_data['adjusted close'][-1] - stock_data['adjusted close'][0]) / stock_data['adjusted close'][0]
             annualized_return = ((1 + daily_returns.mean()) ** 252) - 1
@@ -41,8 +40,9 @@ def process_stock_data(symbol: str, start_date: str, end_date: str):
                 'Volatility': [volatility],
                 'Sharpe Ratio': [sharpe_ratio]
             })
-            print(results)
             results.to_csv('mydata.csv', index=False)
+            d = {'msg': 'Sucess', 'data': results}
+            return d
         else:
             print("please enter a valid symbol")
     except Exception as msg:
